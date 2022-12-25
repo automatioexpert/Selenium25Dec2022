@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="DatePicker.FormatDate">
+      <class name="test.B37">
         <methods>
-          <include name="enterDate"/>
+          <include name="m1"/>
         </methods>
-      </class> <!-- DatePicker.FormatDate -->
+      </class> <!-- test.B37 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
