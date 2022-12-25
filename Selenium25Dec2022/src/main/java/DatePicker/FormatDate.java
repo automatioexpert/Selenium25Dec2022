@@ -6,10 +6,24 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
+import com.beust.jcommander.Parameter;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class FormatDate {
 
+//	The TestNG Eclipse plug-in offers several quick fixes while you are editing a TestNG class (accessible with Ctrl-1 on Windows/Linux and ⌘-1 on Mac OS):
+	String name="The"
+			+ "Coding"
+			+ "Compile"
+			+ "Execution"
+			+ ""
+			+ ""
+			+ ""
+			+ ""
+			+ "";
+
+	@Parameter
 	@Test
 	public void enterDate() {
 		WebDriverManager.chromedriver().setup();

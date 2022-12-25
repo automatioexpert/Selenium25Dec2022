@@ -40,9 +40,13 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M7</version>
 				<configuration>
+					<skipTests>true</skipTests>
+					<!--
 					<suiteXmlFiles>
 						<suiteXmlFile>testng.xml</suiteXmlFile>
-					</suiteXmlFiles>
+					<skipTests>true</skipTests>
+					</suiteXmlFiles> -->
+					
 				</configuration>
 			</plugin>
 		</plugins>
