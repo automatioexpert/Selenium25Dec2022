@@ -1,0 +1,187 @@
+SKIPPING TEST EXECUTION:
+---------------------------------
+mvn install -DskipTests
+--------------------------------
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Selenium25Dec2022</groupId>
+  <artifactId>Selenium25Dec2022</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <properties>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+	</properties>
+
+<dependencies>
+
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>5.3.0</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>4.5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>7.0.0</version>
+
+		</dependency>
+
+
+	</dependencies>
+
+
+<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M7</version>
+				<configuration>
+					<skipTests>true</skipTests>
+					<!--
+					<suiteXmlFiles>
+						<suiteXmlFile>testng.xml</suiteXmlFile>
+					<skipTests>true</skipTests>
+					</suiteXmlFiles> -->
+					
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+
+==========OUTPUT========================
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m----------------< [0;36mSelenium25Dec2022:Selenium25Dec2022[0;1m >-----------------[m
+[[1;34mINFO[m] [1mBuilding Selenium25Dec2022 0.0.1-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36mSelenium25Dec2022[0;1m ---[m
+[[1;33mWARNING[m] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[[1;34mINFO[m] Copying 0 resource
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.1:compile[m [1m(default-compile)[m @ [36mSelenium25Dec2022[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:testResources[m [1m(default-testResources)[m @ [36mSelenium25Dec2022[0;1m ---[m
+[[1;33mWARNING[m] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[[1;34mINFO[m] Copying 0 resource
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.1:testCompile[m [1m(default-testCompile)[m @ [36mSelenium25Dec2022[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:3.0.0-M7:test[m [1m(default-test)[m @ [36mSelenium25Dec2022[0;1m ---[m
+[[1;34mINFO[m] Tests are skipped.
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  1.267 s
+[[1;34mINFO[m] Finished at: 2022-12-26T00:38:10+05:30
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+
+
+---------
+
+<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M7</version>
+				<configuration>
+					<!--<skipTests>true</skipTests>-->
+					<skipTests>${flag}</skipTests>
+					
+					<!--
+					<suiteXmlFiles>
+						<suiteXmlFile>testng.xml</suiteXmlFile>
+					<skipTests>true</skipTests>
+					</suiteXmlFiles> -->
+					
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+Note:
+For the configuration window,pass the below data
+install -DskipTests="false"
+	
+	
+You can also skip the tests via the command line by executing the following command:
+
+mvn install -DskipTests
+If you absolutely must, you can also use the maven.test.skip property to skip compiling the tests. maven.test.skip is honored by Surefire, Failsafe and the Compiler Plugin.
+
+mvn install -Dmaven.test.skip=true
+
+
+
+
+
+
+
+
+
+Skipping by Default
+If you want to skip tests by default but want the ability to re-enable tests from the command line, you need to go via a properties section in the pom:
+
+<project>
+  [...]
+  <properties>
+    <skipTests>true</skipTests>
+  </properties>
+  [...]
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M7</version>
+        <configuration>
+          <skipTests>${skipTests}</skipTests>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  [...]
+</project>
+This will allow you to run with all tests disabled by default and to run them with this command:
+
+mvn install -DskipTests=false
+The same can be done with the skip parameter and other boolean properties of the plugin.
+
+
+
+
+
+
+
+
+Specifying Test Parameters
+Your TestNG test can accept parameters with the @Parameters annotation. You can also pass parameters from Maven into your TestNG test, by specifying them as system properties, like this:
+
+<plugins>
+    [...]
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M7</version>
+        <configuration>
+          <systemPropertyVariables>
+            <propertyName>firefox</propertyName>
+          </systemPropertyVariables>
+        </configuration>
+      </plugin>
+    [...]
+</plugins>
+
